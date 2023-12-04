@@ -5,13 +5,13 @@ import org.scalatest.matchers.should.Matchers
 
 class GameSpec extends AnyFlatSpec with Matchers {
   "game" should "allow character creation with unique name" in {
-    val character = Game.createCharacter("Raxxer")
+    val character = Game.createCharacter(Name("Raxxer"))
 
-    character shouldBe Some(Character("Raxxer"))
+    character shouldBe Some(Character(Name("Raxxer")))
   }
 
   it should "not allow a character with a duplicate name" in {
-    Game.createCharacter("Raxxer")
-    Game.createCharacter("Raxxer") shouldBe None
+    Game.createCharacter(Name("Raxxer"))
+    Game.createCharacter(Name("Raxxer")) shouldBe None
   }
 }

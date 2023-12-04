@@ -1,5 +1,9 @@
 package nl.codecraftr.worldofcodecraft
 
-case class Character(name: String) {
-  val level: Int = 1
+import nl.codecraftr.worldofcodecraft.Level.ONE
+
+case class Character(name: Name) {
+  val level: Level = ONE
 }
+
+case class Name(value: String) extends AnyVal
