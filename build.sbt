@@ -14,7 +14,7 @@ lazy val root = project
   .enablePlugins(ScalafmtPlugin)
   .in(file("."))
   .settings(
-    name := "scala-kata-base",
+    name := "World of Codecraft",
     version := "0.1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
       scalaTest,
