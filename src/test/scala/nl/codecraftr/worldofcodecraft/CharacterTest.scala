@@ -1,6 +1,7 @@
 package nl.codecraftr.worldofcodecraft
 
 import nl.codecraftr.worldofcodecraft.Level.ONE
+import org.scalacheck.Prop.{False, True}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -16,10 +17,10 @@ class CharacterTest extends AnyFlatSpec with Matchers {
   }
 
   "isAlive" should "be true given HP exceeds 0" in {
-    pending
+    aCharacter.isAlive shouldBe true
   }
 
   it should "be false given HP hits 0" in {
-    pending
+    aCharacter.copy(hp = HP(0)).isAlive shouldBe false
   }
 }
