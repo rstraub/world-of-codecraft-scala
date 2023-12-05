@@ -1,13 +1,11 @@
 package nl.codecraftr.worldofcodecraft
 
+import nl.codecraftr.worldofcodecraft.CharacterSpec.aCharacter
 import nl.codecraftr.worldofcodecraft.Level.ONE
-import org.scalacheck.Prop.{False, True}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class CharacterTest extends AnyFlatSpec with Matchers {
-  private val aCharacter = Character(Name("Raxxer"))
-
+class CharacterSpec extends AnyFlatSpec with Matchers {
   "character" should "start at level 1" in {
     aCharacter.level shouldBe ONE
   }
@@ -23,4 +21,9 @@ class CharacterTest extends AnyFlatSpec with Matchers {
   it should "be false given HP hits 0" in {
     aCharacter.copy(hp = HP(0)).isAlive shouldBe false
   }
+}
+
+object CharacterSpec {
+  val aCharacter: Character = Character(Name("Raxxer"))
+  val otherCharacter: Character = Character(Name("Leeroy"))
 }
