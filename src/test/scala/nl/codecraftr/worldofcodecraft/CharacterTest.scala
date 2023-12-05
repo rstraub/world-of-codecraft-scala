@@ -5,9 +5,21 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class CharacterTest extends AnyFlatSpec with Matchers {
-  "character" should "be created with level 1" in {
-    val character = Character(Name("Raxxer"))
+  private val aCharacter = Character(Name("Raxxer"))
 
-    character.level shouldBe ONE
+  "character" should "start at level 1" in {
+    aCharacter.level shouldBe ONE
+  }
+
+  it should "start at 1000HP" in {
+    aCharacter.hp shouldBe HP(1000)
+  }
+
+  "isAlive" should "be true given HP exceeds 0" in {
+    pending
+  }
+
+  it should "be false given HP hits 0" in {
+    pending
   }
 }
