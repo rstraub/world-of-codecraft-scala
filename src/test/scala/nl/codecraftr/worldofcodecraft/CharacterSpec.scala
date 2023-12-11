@@ -1,6 +1,7 @@
 package nl.codecraftr.worldofcodecraft
 
 import nl.codecraftr.worldofcodecraft.CharacterSpec.aCharacter
+import nl.codecraftr.worldofcodecraft.HP.{INITIAL, ZERO}
 import nl.codecraftr.worldofcodecraft.Level.ONE
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -20,6 +21,18 @@ class CharacterSpec extends AnyFlatSpec with Matchers {
 
   it should "be false given HP hits 0" in {
     aCharacter.copy(hp = HP(0)).isAlive shouldBe false
+  }
+
+  "hit" should "reduce HP by given points" in {
+    val result = aCharacter.hit(1)
+
+    result.hp shouldBe INITIAL - 1
+  }
+
+  it should "not reduce HP below 0" in {
+    val result = aCharacter.hit(INITIAL.value + 1)
+
+    result.hp shouldBe ZERO
   }
 }
 
