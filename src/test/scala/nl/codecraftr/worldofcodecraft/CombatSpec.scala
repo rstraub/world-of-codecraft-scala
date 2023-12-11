@@ -7,14 +7,21 @@ import org.scalatest.matchers.should.Matchers
 
 class CombatSpec extends AnyFlatSpec with Matchers {
   "attack" should "reduce HP of defender" in {
-    val result = Combat.attack(aCharacter, otherCharacter)
+    val (_, defender) = Combat.attack(aCharacter, otherCharacter)
 
-    result.hp shouldBe otherCharacter.hp - 200
+    defender.hp shouldBe otherCharacter.hp - 200
   }
 
   it should "not damage self" in {
-    val result = Combat.attack(aCharacter, aCharacter)
+    val (_, defender) = Combat.attack(aCharacter, aCharacter)
 
-    result.hp shouldBe INITIAL
+    defender.hp shouldBe INITIAL
+  }
+
+  it should "net the attacker 200 XP if he kills the defender" in {
+    val weakenedCharacter = otherCharacter.copy(hp = HP(1))
+    val (attacker, _) = Combat.attack(aCharacter, weakenedCharacter)
+
+    attacker.xp shouldBe XP(200)
   }
 }
