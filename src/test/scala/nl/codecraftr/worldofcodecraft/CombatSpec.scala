@@ -1,19 +1,20 @@
 package nl.codecraftr.worldofcodecraft
 
 import nl.codecraftr.worldofcodecraft.CharacterSpec.{aCharacter, otherCharacter}
+import nl.codecraftr.worldofcodecraft.HP.INITIAL
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class CombatSpec extends AnyFlatSpec with Matchers {
   "attack" should "reduce HP of defender" in {
-    val defender = Combat.attack(aCharacter, otherCharacter)
+    val result = Combat.attack(aCharacter, otherCharacter)
 
-    defender.hp shouldBe HP(1000 - 200)
+    result.hp shouldBe otherCharacter.hp - 200
   }
 
   it should "not damage self" in {
-    val defender = Combat.attack(aCharacter, aCharacter)
+    val result = Combat.attack(aCharacter, aCharacter)
 
-    defender.hp shouldBe HP(1000)
+    result.hp shouldBe INITIAL
   }
 }
