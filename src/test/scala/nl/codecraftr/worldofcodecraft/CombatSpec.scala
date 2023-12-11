@@ -24,4 +24,23 @@ class CombatSpec extends AnyFlatSpec with Matchers {
 
     attacker.xp shouldBe XP(500)
   }
+
+  // TODO make these table driven once there is a level -> XP mapping
+  "attacker" should "deal 25% more dmg per level higher than the defender" in {
+    val attacker = aCharacter.copy(xp = XP(1000))
+    val defender = otherCharacter.copy(xp = XP(0))
+
+    val (_, damagedDefender) = Combat.attack(attacker, defender)
+
+    damagedDefender.hp shouldBe defender.hp - 250
+  }
+
+  it should "deal 25% less dmg per level lower than the defender" in {
+    val attacker = aCharacter.copy(xp = XP(0))
+    val defender = otherCharacter.copy(xp = XP(1000))
+
+    val (_, damagedDefender) = Combat.attack(attacker, defender)
+
+    damagedDefender.hp shouldBe defender.hp - 150
+  }
 }
