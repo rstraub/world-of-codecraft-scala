@@ -34,6 +34,12 @@ class CharacterSpec extends AnyFlatSpec with Matchers {
 
     result.hp shouldBe ZERO
   }
+
+  "gainXP" should "increase XP by given points" in {
+    val result = aCharacter.copy(xp = XP(1000)).gainXP(500)
+
+    result.xp shouldBe XP(500)
+  }
 }
 
 object CharacterSpec {
