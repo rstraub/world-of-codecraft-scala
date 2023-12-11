@@ -12,5 +12,5 @@ case class Character(name: Name, hp: HP = INITIAL, xp: XP = XP.ZERO) {
     if (points > hp.value) copy(hp = ZERO)
     else copy(hp = hp - points)
 
-  def gainXP(points: Int): Character = copy(xp = xp + points)
+  def gain(points: XP): Character = copy(xp = xp + points)
 }

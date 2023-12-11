@@ -2,6 +2,7 @@ package nl.codecraftr.worldofcodecraft
 
 object Combat {
   private def BASE_DMG = 200
+  private val XP_PER_KILL = XP(500)
 
   def attack(
       attacker: Character,
@@ -12,7 +13,7 @@ object Combat {
     val newDefender = defender.hit(BASE_DMG)
 
     val newAttacker =
-      if (newDefender.isDead) attacker.gainXP(BASE_DMG)
+      if (newDefender.isDead) attacker.gain(XP_PER_KILL)
       else attacker
 
     (newAttacker, newDefender)

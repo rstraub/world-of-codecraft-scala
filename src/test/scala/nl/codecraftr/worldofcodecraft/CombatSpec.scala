@@ -18,10 +18,10 @@ class CombatSpec extends AnyFlatSpec with Matchers {
     defender.hp shouldBe INITIAL
   }
 
-  it should "net the attacker 200 XP if he kills the defender" in {
+  it should "net the attacker 500 XP if he kills the defender" in {
     val weakenedCharacter = otherCharacter.copy(hp = HP(1))
     val (attacker, _) = Combat.attack(aCharacter, weakenedCharacter)
 
-    attacker.xp shouldBe XP(200)
+    attacker.xp shouldBe XP(500)
   }
 }

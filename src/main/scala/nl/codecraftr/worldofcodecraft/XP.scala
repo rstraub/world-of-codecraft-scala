@@ -3,7 +3,7 @@ package nl.codecraftr.worldofcodecraft
 case class XP(value: Int) {
   require(value >= 0, "XP cannot be negative")
 
-  def +(points: Int): XP = XP(value + points)
+  def +(points: XP): XP = XP(value + points.value)
 
   lazy val level: Level = {
     value match {
