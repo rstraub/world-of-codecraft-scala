@@ -7,7 +7,14 @@ object Combat {
       attacker: Character,
       defender: Character
   ): (Character, Character) = {
-    if (attacker == defender) (attacker, defender)
-    else (attacker, defender.hit(BASE_DMG))
+    if (attacker == defender) return (attacker, defender)
+
+    val newDefender = defender.hit(BASE_DMG)
+
+    val newAttacker =
+      if (newDefender.isDead) attacker.gainXP(BASE_DMG)
+      else attacker
+
+    (newAttacker, newDefender)
   }
 }

@@ -5,6 +5,7 @@ import nl.codecraftr.worldofcodecraft.Level.ONE
 
 case class Character(name: Name, hp: HP = INITIAL, xp: XP = XP.ZERO) {
   lazy val isAlive: Boolean = hp > ZERO
+  lazy val isDead: Boolean = !isAlive
   lazy val level: Level = xp.level
 
   def hit(points: Int): Character =
